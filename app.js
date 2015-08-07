@@ -38,7 +38,7 @@ var userSchema = new Schema({
 var User = mongoose.model('loggedusers', userSchema);
 var routes = require('./routes');
 
-app.set('port', 8080);
+app.set('port', process.env.PORT || 8080);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
