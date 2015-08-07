@@ -38,7 +38,7 @@ var userSchema = new Schema({
 var User = mongoose.model('loggedusers', userSchema);
 var routes = require('./routes');
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 28521);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -60,7 +60,10 @@ var sessionMiddleware = expressSession({
     secret: 'arnab',
     store: new MongoStore({
         url: dbConfig.url
-    })
+    }),
+    proxy: true,
+    resave: true,
+    saveUninitialized: true
 });
 
 // TODO - Why Do we need this key ?
