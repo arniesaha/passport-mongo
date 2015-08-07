@@ -9,7 +9,7 @@ var express = require('express'),
     bodyParser = require('body-parser');
 
 var app = module.exports = express();
-var server = require('http').createServer(app);
+var server = require('http').Server(app);
 var router = express.Router();
 //Set up the Socket.io server
 var io = require('socket.io').listen(server);
@@ -65,6 +65,7 @@ var sessionMiddleware = expressSession({
     resave: true,
     saveUninitialized: true
 });
+
 
 // TODO - Why Do we need this key ?
 app.use(sessionMiddleware);
